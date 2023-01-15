@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.loukhin.vanillaextract.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "server": [
+    "InteractMixin",
+    "PlayerConnectMixin",
+    "ServerPlayNetworkMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
