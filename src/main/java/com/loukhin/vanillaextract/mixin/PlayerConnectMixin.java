@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerManager.class)
 public class PlayerConnectMixin {
-    @Inject(at = @At("TAIL"), method = "onPlayerConnect(Lnet/minecraft/network/ClientConnection;Lnet/minecraft/server/network/ServerPlayerEntity;)V")
+    @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;onPlayerConnected(Lnet/minecraft/server/network/ServerPlayerEntity;)V", shift = At.Shift.AFTER), method = "onPlayerConnect")
     void onPlayerConnect(ClientConnection connection, ServerPlayerEntity player, CallbackInfo ci) {
         PlayerManagerHandler.onPlayerConnect(player);
     }
