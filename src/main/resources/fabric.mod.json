@@ -3,6 +3,7 @@
   "id": "vanillaextract",
   "version": "${version}",
 
+  "icon": "assets/vanillaextract/icon.png",
   "name": "Vanilla Extract",
   "description": "",
   "authors": [
@@ -19,6 +20,12 @@
   "entrypoints": {
     "main": [
       "com.loukhin.vanillaextract.VanillaExtract"
+    ],
+    "client": [
+      "com.loukhin.vanillaextract.client.VanillaExtractClient"
+    ],
+    "server": [
+      "com.loukhin.vanillaextract.server.VanillaExtractServer"
     ]
   },
   "mixins": [
@@ -28,7 +35,7 @@
   "depends": {
     "fabricloader": ">=0.14.19",
     "fabric-api": "*",
-    "minecraft": "~1.19.4",
+    "minecraft": "1.21.x",
     "java": ">=17"
   },
   "suggests": {

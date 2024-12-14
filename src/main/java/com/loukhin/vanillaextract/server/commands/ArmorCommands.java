@@ -1,22 +1,19 @@
-package com.loukhin.vanillaextract.commands;
+package com.loukhin.vanillaextract.server.commands;
 
-import com.loukhin.vanillaextract.VanillaExtract;
-import com.loukhin.vanillaextract.access.ServerPlayerEntityAccess;
-import com.loukhin.vanillaextract.config.ArmorHide;
-import com.loukhin.vanillaextract.network.VanillaExtractNetwork;
+import com.loukhin.vanillaextract.server.VanillaExtractServer;
+import com.loukhin.vanillaextract.common.config.ArmorHide;
+import com.loukhin.vanillaextract.common.network.ArmorStatePayload;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.datafixers.util.Pair;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.loader.impl.util.StringUtil;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.packet.s2c.play.EntityEquipmentUpdateS2CPacket;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -45,14 +42,12 @@ public class ArmorCommands {
                     Boolean hidden = BoolArgumentType.getBool(context, "hidden");
                     String hidingString = (hidden) ? "hiding" : "showing";
                     context.getSource().sendMessage(Text.literal("%s is now %s".formatted(StringUtil.capitalize(slot), hidingString)));
-                    HashMap<String, Boolean> hideSettings = VanillaExtract.config().armorHideSettings.users.get(player.getUuid());
-                    hideSettings.put(slot, hidden);
-                    VanillaExtract.config().armorHideSettings.users.put(player.getUuid(), hideSettings);
-                    VanillaExtract.config().writeChanges();
-                    PacketByteBuf buf = PacketByteBufs.create();
-                    buf.writeMap(hideSettings, PacketByteBuf::writeString, PacketByteBuf::writeBoolean);
-                    ServerPlayNetworking.send(player, VanillaExtractNetwork.ARMOR_STATE_ID, buf);
-                    for (ServerPlayerEntity eachPlayer : PlayerLookup.tracking(player.getWorld(), player.getBlockPos())) {
+                    HashMap<String, Boolean> armorHideSettings = VanillaExtractServer.config().armorHideSettings.users.get(player.getUuid());
+                    armorHideSettings.put(slot, hidden);
+                    VanillaExtractServer.config().armorHideSettings.users.put(player.getUuid(), armorHideSettings);
+                    VanillaExtractServer.config().writeChanges();
+                    ServerPlayNetworking.send(player, new ArmorStatePayload(armorHideSettings));
+                    for (ServerPlayerEntity eachPlayer : PlayerLookup.tracking(player.getServerWorld(), player.getBlockPos())) {
                         if (player.equals(eachPlayer)) continue;
 
                         EquipmentSlot equipmentSlot = EquipmentSlot.byName(slot);

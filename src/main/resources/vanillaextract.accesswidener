@@ -3,6 +3,7 @@ accessWidener v2 named
 accessible field net/minecraft/entity/ExperienceOrbEntity amount I
 accessible field net/minecraft/entity/ExperienceOrbEntity pickingCount I
 accessible field net/minecraft/entity/player/PlayerInventory combinedInventory Ljava/util/List;
-accessible method net/minecraft/entity/ExperienceOrbEntity repairPlayerGears (Lnet/minecraft/entity/player/PlayerEntity;I)I
-#accessible method net/minecraft/server/PlayerManager savePlayerData (Lnet/minecraft/server/network/ServerPlayerEntity;)V
-#accessible method net/minecraft/server/integrated/IntegratedPlayerManager savePlayerData (Lnet/minecraft/server/network/ServerPlayerEntity;)V
+accessible field net/minecraft/client/render/entity/EntityRenderer dispatcher Lnet/minecraft/client/render/entity/EntityRenderDispatcher;
+
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen x I
+accessible field net/minecraft/client/gui/screen/ingame/HandledScreen y I

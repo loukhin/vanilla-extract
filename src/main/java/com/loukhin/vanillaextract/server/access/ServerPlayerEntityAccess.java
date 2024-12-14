@@ -1,6 +1,6 @@
-package com.loukhin.vanillaextract.access;
+package com.loukhin.vanillaextract.server.access;
 
-import com.loukhin.vanillaextract.config.ArmorHide;
+import com.loukhin.vanillaextract.common.config.ArmorHide;
 
 public interface ServerPlayerEntityAccess {
 

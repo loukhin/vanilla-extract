@@ -1,4 +1,4 @@
-package com.loukhin.vanillaextract.config;
+package com.loukhin.vanillaextract.server.config;
 
 import com.google.gson.*;
 

@@ -1,6 +1,6 @@
-package com.loukhin.vanillaextract.handler;
+package com.loukhin.vanillaextract.server.handler;
 
-import com.loukhin.vanillaextract.VanillaExtract;
+import com.loukhin.vanillaextract.server.VanillaExtractServer;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class PacketHandler {
     public static void onEntityEquipmentUpdate(ServerWorld world, EntityEquipmentUpdateS2CPacket equipmentUpdatePacket) {
-        Entity entity = world.getEntityById(equipmentUpdatePacket.getId());
+        Entity entity = world.getEntityById(equipmentUpdatePacket.getEntityId());
         if (entity instanceof ServerPlayerEntity player) {
             List<Pair<EquipmentSlot, ItemStack>> equipmentList = equipmentUpdatePacket.getEquipmentList();
             for (int i = 0; i < equipmentList.size(); i++) {
@@ -23,8 +23,8 @@ public class PacketHandler {
                 EquipmentSlot equipmentSlot = current.getFirst();
                 ItemStack item = current.getSecond();
 
-                if (equipmentSlot.getType().equals(EquipmentSlot.Type.ARMOR) && item.getItem() instanceof ArmorItem) {
-                    HashMap<String, Boolean> userDatas = VanillaExtract.config().armorHideSettings.users.get(player.getUuid());
+                if (equipmentSlot.getType().equals(EquipmentSlot.Type.HUMANOID_ARMOR) && item.getItem() instanceof ArmorItem) {
+                    HashMap<String, Boolean> userDatas = VanillaExtractServer.config().armorHideSettings.users.get(player.getUuid());
                     if (userDatas != null) {
                         boolean isHidden = userDatas.get(equipmentSlot.getName());
                         if (isHidden) {

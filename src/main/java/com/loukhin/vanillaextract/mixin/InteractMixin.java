@@ -1,6 +1,6 @@
 package com.loukhin.vanillaextract.mixin;
 
-import com.loukhin.vanillaextract.handler.ServerPlayerInteractionHandler;
+import com.loukhin.vanillaextract.server.handler.ServerPlayerInteractionHandler;
 import net.minecraft.item.*;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.network.ServerPlayerInteractionManager;

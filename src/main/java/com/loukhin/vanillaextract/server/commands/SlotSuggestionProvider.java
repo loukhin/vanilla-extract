@@ -1,6 +1,6 @@
-package com.loukhin.vanillaextract.commands;
+package com.loukhin.vanillaextract.server.commands;
 
-import com.loukhin.vanillaextract.config.ArmorHide;
+import com.loukhin.vanillaextract.common.config.ArmorHide;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;

@@ -1,11 +1,11 @@
-package com.loukhin.vanillaextract.config;
+package com.loukhin.vanillaextract.common.config;
 
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.nbt.NbtCompound;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ArmorHide {
     public static final ArrayList<String> slotList = getArmorSlotList();
@@ -14,7 +14,7 @@ public class ArmorHide {
     private static ArrayList<String> getArmorSlotList() {
         ArrayList<String> slotList = new ArrayList<>();
         Arrays.stream(EquipmentSlot.values())
-                .filter((equipmentSlot) -> equipmentSlot.getType() == EquipmentSlot.Type.ARMOR)
+                .filter((equipmentSlot) -> equipmentSlot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR)
                 .sorted((slot1, slot2) -> slot2.getEntitySlotId() - slot1.getEntitySlotId())
                 .forEach((equipmentSlot) -> {
                     slotList.add(equipmentSlot.getName());
@@ -22,17 +22,15 @@ public class ArmorHide {
         return slotList;
     }
 
-    public ArmorHide(NbtCompound nbt) {
-        for(String slot: slotList.toArray(new String[0])) {
-            this.state.put(slot, nbt.getBoolean(slot));
-        }
+    public ArmorHide(Map<String, Boolean> hideSettings) {
+        this.state.putAll(hideSettings);
     }
 
-    public NbtCompound toNbt() {
-        NbtCompound nbt = new NbtCompound();
-        for(String slot: slotList.toArray(new String[0])) {
-            nbt.putBoolean(slot, this.state.get(slot));
-        }
-        return nbt;
+    public static ArmorHide empty() {
+        HashMap<String, Boolean> state = new HashMap<>();
+        getArmorSlotList().forEach((slot) -> {
+            state.put(slot, false);
+        });
+        return new ArmorHide(state);
     }
 }

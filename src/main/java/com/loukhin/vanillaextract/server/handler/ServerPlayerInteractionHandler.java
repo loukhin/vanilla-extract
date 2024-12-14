@@ -1,5 +1,6 @@
-package com.loukhin.vanillaextract.handler;
+package com.loukhin.vanillaextract.server.handler;
 
+import com.loukhin.vanillaextract.VanillaExtract;
 import com.loukhin.vanillaextract.utils.CustomPumpkinUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

@@ -1,18 +1,19 @@
 package com.loukhin.vanillaextract.utils;
 
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
 
 public class CustomPumpkinUtils {
-    public static String getCustomModelData(ItemStack stack) {
-        if (stack.getNbt() != null) {
-            return String.valueOf(stack.getNbt().get("CustomModelData"));
-        }
-        return "";
-    }
+    static final Identifier ID = Identifier.of("minecraft", "carved_pumpkin");
 
     public static boolean isCustomPumpkin(ItemStack stack) {
-        boolean isCarvedPumpkin = String.valueOf(stack.getItem()).equals("carved_pumpkin");
-        boolean hasCustomModelData = !getCustomModelData(stack).equals("");
-        return isCarvedPumpkin && hasCustomModelData;
+        boolean isCarvedPumpkin = Registries.ITEM.getId(stack.getItem()).equals(ID);
+        Identifier itemId = stack.get(DataComponentTypes.ITEM_MODEL);
+        if (itemId == null) return false;
+
+        boolean hasCustomModel = !itemId.equals(ID);
+        return isCarvedPumpkin && hasCustomModel;
     }
 }
