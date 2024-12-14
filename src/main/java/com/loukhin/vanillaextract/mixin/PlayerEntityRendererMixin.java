@@ -27,12 +27,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(EntityRenderer.class)
 public class PlayerEntityRendererMixin<T extends Entity, S extends EntityRenderState, M extends EntityModel<? super S>> {
     @Inject(at=@At("HEAD"), method = "updateRenderState")
-    public void updateRenderState(T entity, S state, float tickDelta, CallbackInfo ci, @Share(namespace = VanillaExtract.MOD_ID, value = "entityToRender") LocalIntRef ctx) {
-        VanillaExtract.LOGGER.info("render state update");
+    public void updateRenderState(T entity, S state, float tickDelta, CallbackInfo ci) {
         if (state instanceof PlayerEntityRenderState) {
             ((PlayerEntityRenderStateAccess)state).vanilla_extract$setUuid(entity.getUuid());
-            VanillaExtract.LOGGER.info(((PlayerEntityRenderStateAccess)state).vanilla_extract$getUuid().toString());
         }
-        ctx.set(22);
     }
 }

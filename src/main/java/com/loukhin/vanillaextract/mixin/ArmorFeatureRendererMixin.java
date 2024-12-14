@@ -40,15 +40,12 @@ public class ArmorFeatureRendererMixin<S extends BipedEntityRenderState, M exten
     private void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, S bipedEntityRenderState, float f, float g, CallbackInfo ci) {
         if (bipedEntityRenderState instanceof PlayerEntityRenderState) {
             boolean shouldDoThingy = FeatureRenderHandler.shouldCheckForCancellation(((PlayerEntityRenderStateAccess) bipedEntityRenderState).vanilla_extract$getUuid());
-            VanillaExtract.LOGGER.info("thingy -> {}", shouldDoThingy);
             this.vanilla_extract$setShouldConsiderCancelling(shouldDoThingy);
         }
     }
 
     @Inject(at = @At("HEAD"), method = "renderArmor", cancellable = true)
     private void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, ItemStack stack, EquipmentSlot slot, int light, A armorModel, CallbackInfo ci) {
-        VanillaExtract.LOGGER.info("render armor feature -> {}", this.vanilla_extract$shouldConsiderCancelling());
-
         if (this.vanilla_extract$shouldConsiderCancelling() && VanillaExtractClient.armorHide.state.get(slot.getName())) {
             ci.cancel();
         }
