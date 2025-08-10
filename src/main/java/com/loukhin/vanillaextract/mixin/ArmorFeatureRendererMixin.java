@@ -39,8 +39,7 @@ public class ArmorFeatureRendererMixin<S extends BipedEntityRenderState, M exten
     @Inject(at = @At("HEAD"), method = "render(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;ILnet/minecraft/client/render/entity/state/BipedEntityRenderState;FF)V")
     private void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, S bipedEntityRenderState, float f, float g, CallbackInfo ci) {
         if (bipedEntityRenderState instanceof PlayerEntityRenderState) {
-            boolean shouldDoThingy = FeatureRenderHandler.shouldCheckForCancellation(((PlayerEntityRenderStateAccess) bipedEntityRenderState).vanilla_extract$getUuid());
-            this.vanilla_extract$setShouldConsiderCancelling(shouldDoThingy);
+            this.vanilla_extract$setShouldConsiderCancelling(FeatureRenderHandler.shouldCheckForCancellation(((PlayerEntityRenderStateAccess) bipedEntityRenderState).vanilla_extract$getUuid()));
         }
     }
 

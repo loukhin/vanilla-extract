@@ -34,7 +34,7 @@
   "accessWidener" : "vanillaextract.accesswidener",
   "depends": {
     "fabricloader": ">=0.14.19",
-    "fabric-api": "*",
+    "fabric-api": ">=0.111.0+1.21.4",
     "minecraft": "1.21.x",
     "java": ">=17"
   },

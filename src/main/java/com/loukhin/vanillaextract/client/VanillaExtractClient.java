@@ -1,6 +1,6 @@
 package com.loukhin.vanillaextract.client;
 
-import com.loukhin.vanillaextract.client.network.VanillaExtractNetworkClient;
+import com.loukhin.vanillaextract.common.network.VanillaExtractNetwork;
 import com.loukhin.vanillaextract.common.config.ArmorHide;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -12,6 +12,6 @@ public class VanillaExtractClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        VanillaExtractNetworkClient.registerS2CPackets();
+        VanillaExtractNetwork.registerS2CPackets();
     }
 }

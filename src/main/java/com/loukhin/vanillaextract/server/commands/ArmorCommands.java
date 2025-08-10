@@ -47,7 +47,7 @@ public class ArmorCommands {
                     VanillaExtractServer.config().armorHideSettings.users.put(player.getUuid(), armorHideSettings);
                     VanillaExtractServer.config().writeChanges();
                     ServerPlayNetworking.send(player, new ArmorStatePayload(armorHideSettings));
-                    for (ServerPlayerEntity eachPlayer : PlayerLookup.tracking(player.getServerWorld(), player.getBlockPos())) {
+                    for (ServerPlayerEntity eachPlayer : PlayerLookup.tracking(player.getWorld(), player.getBlockPos())) {
                         if (player.equals(eachPlayer)) continue;
 
                         EquipmentSlot equipmentSlot = EquipmentSlot.byName(slot);

@@ -1,8 +1,8 @@
 package com.loukhin.vanillaextract.server;
 
+import com.loukhin.vanillaextract.common.network.VanillaExtractNetwork;
 import com.loukhin.vanillaextract.server.commands.ArmorCommands;
 import com.loukhin.vanillaextract.server.config.VanillaExtractConfig;
-import com.loukhin.vanillaextract.server.network.VanillaExtractNetworkServer;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -36,18 +36,10 @@ public class VanillaExtractServer implements DedicatedServerModInitializer {
 
     @Override
     public void onInitializeServer() {
-        VanillaExtractNetworkServer.registerC2SPackets();
+        VanillaExtractNetwork.registerC2SPackets();
 
         ServerMessageDecoratorEvent.EVENT.register(ServerMessageDecoratorEvent.CONTENT_PHASE, VanillaExtractServer::messageHandler);
         CommandRegistrationCallback.EVENT.register(ArmorCommands::register);
-    }
-
-
-    public static void playerConnectHandler(ServerPlayerEntity player) {
-//        player.networkHandler.sendPacket(new SetEq);
-//        if (config().multiplierSettings.expMultiplierEnabled && config().multiplierSettings.roAnnounce) {
-//            player.sendMessage(getRoAnnounce());
-//        }
     }
 
     public static Text messageHandler(ServerPlayerEntity sender, Text message) {

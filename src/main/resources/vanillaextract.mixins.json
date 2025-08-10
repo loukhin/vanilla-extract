@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.loukhin.vanillaextract.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
   ],
   "server": [
@@ -14,9 +14,12 @@
   "client": [
     "ArmorFeatureRendererMixin",
     "BlockItemMixin",
+    "CapeFeatureRendererMixin",
     "HeadFeatureRendererMixin",
+    "InventoryScreenMixin",
     "PlayerEntityRendererMixin",
-    "PlayerEntityRenderStateMixin"
+    "PlayerEntityRenderStateMixin",
+    "RecipeBookScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

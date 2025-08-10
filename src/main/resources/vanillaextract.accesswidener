@@ -1,9 +1,7 @@
 accessWidener v2 named
 
-accessible field net/minecraft/entity/ExperienceOrbEntity amount I
-accessible field net/minecraft/entity/ExperienceOrbEntity pickingCount I
-accessible field net/minecraft/entity/player/PlayerInventory combinedInventory Ljava/util/List;
 accessible field net/minecraft/client/render/entity/EntityRenderer dispatcher Lnet/minecraft/client/render/entity/EntityRenderDispatcher;
 
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen x I
 accessible field net/minecraft/client/gui/screen/ingame/HandledScreen y I
+accessible method net/minecraft/client/gui/screen/Screen addDrawableChild (Lnet/minecraft/client/gui/Element;)Lnet/minecraft/client/gui/Element;
