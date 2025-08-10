@@ -23,7 +23,7 @@ public class InteractMixin {
 
     @Inject(at = @At("HEAD"), method = "interactItem(Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;Lnet/minecraft/util/Hand;)Lnet/minecraft/util/ActionResult;", cancellable = true)
     private void interactItem(ServerPlayerEntity player, World world, ItemStack stack, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
-        ServerPlayerInteractionHandler.interactItemHandler(player, stack, null, cir);
+        ServerPlayerInteractionHandler.interactItemHandler(player, stack, cir);
     }
 
 }

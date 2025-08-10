@@ -1,6 +1,5 @@
 package com.loukhin.vanillaextract.server.handler;
 
-import com.loukhin.vanillaextract.VanillaExtract;
 import com.loukhin.vanillaextract.utils.CustomPumpkinUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -9,7 +8,6 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 public class ServerPlayerInteractionHandler {
@@ -42,7 +40,7 @@ public class ServerPlayerInteractionHandler {
         return stack.useOnBlock(context);
     }
 
-    public static void interactItemHandler(PlayerEntity player, ItemStack stack, BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> cir) {
+    public static void interactItemHandler(PlayerEntity player, ItemStack stack, CallbackInfoReturnable<ActionResult> cir) {
         if (CustomPumpkinUtils.isCustomPumpkin(stack)) {
             equipOnHead(player, stack);
             cir.setReturnValue(ActionResult.FAIL);

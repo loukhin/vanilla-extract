@@ -1,6 +1,5 @@
 package com.loukhin.vanillaextract.client.gui;
 
-import com.loukhin.vanillaextract.VanillaExtract;
 import com.loukhin.vanillaextract.client.VanillaExtractClient;
 import com.loukhin.vanillaextract.common.config.ArmorHide;
 import com.loukhin.vanillaextract.common.network.ArmorStatePayload;

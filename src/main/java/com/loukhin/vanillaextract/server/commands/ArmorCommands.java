@@ -26,7 +26,7 @@ import java.util.List;
 import static net.minecraft.server.command.CommandManager.*;
 
 public class ArmorCommands {
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess, RegistrationEnvironment environment) {
+    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess ignoredRegistryAccess, RegistrationEnvironment ignoredEnvironment) {
         dispatcher.register(
             literal("hidearmor").then(
                 argument("slot", StringArgumentType.string()).suggests(new SlotSuggestionProvider()).then(argument("hidden", BoolArgumentType.bool()).executes(context -> {

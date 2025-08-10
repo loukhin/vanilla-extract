@@ -1,8 +1,5 @@
 package com.loukhin.vanillaextract.mixin;
 
-import com.llamalad7.mixinextras.sugar.Share;
-import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
-import com.loukhin.vanillaextract.VanillaExtract;
 import com.loukhin.vanillaextract.client.VanillaExtractClient;
 import com.loukhin.vanillaextract.client.access.ArmorFeatureRendererAccess;
 import com.loukhin.vanillaextract.client.access.PlayerEntityRenderStateAccess;
@@ -22,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ArmorFeatureRenderer.class)
-public class ArmorFeatureRendererMixin<S extends BipedEntityRenderState, M extends BipedEntityModel<S>, A extends BipedEntityModel<S>> implements ArmorFeatureRendererAccess {
+public class ArmorFeatureRendererMixin<S extends BipedEntityRenderState, A extends BipedEntityModel<S>> implements ArmorFeatureRendererAccess {
     @Unique
     boolean shouldConsiderCancelling = false;
 

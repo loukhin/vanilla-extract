@@ -6,11 +6,8 @@ import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.mojang.brigadier.arguments.FloatArgumentType.floatArg;
-
 public class VanillaExtract implements ModInitializer {
-    public static final String MOD_ID = "assets/vanillaextract";
-    public static final Logger LOGGER = LoggerFactory.getLogger("assets/vanillaextract");
+    public static final Logger LOGGER = LoggerFactory.getLogger("vanillaextract");
 
     @Override
     public void onInitialize() {

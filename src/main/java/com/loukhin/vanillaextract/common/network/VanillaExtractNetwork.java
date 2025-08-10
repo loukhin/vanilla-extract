@@ -68,8 +68,6 @@ public class VanillaExtractNetwork {
     }
 
     public static void registerS2CPackets() {
-        ClientPlayNetworking.registerGlobalReceiver(ArmorStatePayload.ID, (payload, context) -> {
-            VanillaExtractClient.armorHide = new ArmorHide(payload.armorStates());
-        });
+        ClientPlayNetworking.registerGlobalReceiver(ArmorStatePayload.ID, (payload, context) -> VanillaExtractClient.armorHide = new ArmorHide(payload.armorStates()));
     }
 }

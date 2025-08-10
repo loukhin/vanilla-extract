@@ -3,10 +3,8 @@ package com.loukhin.vanillaextract.server.handler;
 import com.loukhin.vanillaextract.common.network.ArmorStatePayload;
 import com.loukhin.vanillaextract.common.network.VanillaExtractNetwork;
 import com.loukhin.vanillaextract.server.VanillaExtractServer;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.util.HashMap;
