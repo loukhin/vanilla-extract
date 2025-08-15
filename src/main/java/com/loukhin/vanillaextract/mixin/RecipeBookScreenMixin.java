@@ -14,6 +14,6 @@ public class RecipeBookScreenMixin extends Screen {
         super(title);
     }
 
-    @Inject(at = @At("HEAD"), method = "mouseClicked")
+    @Inject(at = @At("HEAD"), method = "mouseClicked", cancellable = true)
     public void onMouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir) { }
 }
